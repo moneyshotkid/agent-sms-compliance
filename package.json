@@ -1,8 +1,8 @@
 {
   "name": "agent-sms-compliance",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
-  "description": "Agent skill for US A2P 10DLC SMS compliance: brand/campaign registration, consent, STOP/HELP, rejection fixes.",
+  "description": "Agent skill for US A2P 10DLC SMS compliance: intake and preflight, brand/campaign registration, consent, STOP/HELP, isolation, and rejection triage.",
   "license": "MIT",
   "author": "Nick Nguyen / Internet Technology Services",
   "repository": {
@@ -17,6 +17,8 @@
     "sms",
     "compliance",
     "twilio",
+    "telnyx",
+    "bandwidth",
     "tcr"
   ],
   "files": [

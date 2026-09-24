@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/moneyshotkid/agent-sms-compliance/templates/client-intake.schema.json",
+  "title": "ClientIntake",
+  "description": "Operator intake for one US A2P 10DLC client. EIN and tax ID are operator-held: validate them in the client folder, never commit a real value, and never put one in this repository. Examples use the placeholder XX-XXXXXXX.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "legal_name",
+    "website",
+    "use_case",
+    "opt_in_url",
+    "sample_messages",
+    "expected_volume",
+    "vertical"
+  ],
+  "properties": {
+    "client_ref": {
+      "type": "string",
+      "description": "Short stable id used on the case tracker. No spaces.",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+    },
+    "legal_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Legal entity name as it should appear on the brand. Must match tax or formation records."
+    },
+    "ein_or_tax_id": {
+      "type": ["string", "null"],
+      "description": "Operator-held. Store outside git. Use null only for a sole proprietor path that has no EIN. Placeholder for docs and examples: XX-XXXXXXX.",
+      "pattern": "^(XX-XXXXXXX|[0-9]{2}-[0-9]{7})$"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "private_profit",
+        "public_profit",
+        "nonprofit",
+        "government",
+        "sole_proprietor"
+      ]
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public site that matches the use case and is reachable at filing time."
+    },
+    "use_case": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One sentence: who texts whom, and why."
+    },
+    "opt_in_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public page or screen where the recipient opts in. Screenshot lives in the client folder."
+    },
+    "sample_messages": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Two to five samples that match the live product, including brand name and STOP where the CSP requires it."
+    },
+    "expected_volume": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Plain-language volume, for example about 200 messages per day."
+        },
+        "messages_per_day": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "segments_per_month": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "vertical": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Honest industry label. Dating and social dating stay high-scrutiny. Prohibited SHAFT, cannabis, and gambling promotions are do-not-file."
+    },
+    "dba": { "type": "string" },
+    "address": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "region": { "type": "string" },
+        "postal_code": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "authorized_contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" }
+      }
+    },
+    "privacy_policy_url": { "type": "string", "format": "uri" },
+    "terms_url": { "type": "string", "format": "uri" },
+    "help_reply": { "type": "string" },
+    "stop_reply": { "type": "string" },
+    "csp": {
+      "type": "string",
+      "enum": ["bandwidth", "twilio", "telnyx", "tcr_direct", "undecided"]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "entity_type": { "const": "sole_proprietor" } },
+        "required": ["entity_type"]
+      },
+      "then": {},
+      "else": { "required": ["ein_or_tax_id"] }
+    }
+  ]
+}
