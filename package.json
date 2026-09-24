@@ -1,0 +1,30 @@
+{
+  "name": "agent-sms-compliance",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Agent skill for US A2P 10DLC SMS compliance: brand/campaign registration, consent, STOP/HELP, rejection fixes.",
+  "license": "MIT",
+  "author": "Nick Nguyen / Internet Technology Services",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moneyshotkid/agent-sms-compliance.git"
+  },
+  "keywords": [
+    "agent-skill",
+    "agentskills",
+    "10dlc",
+    "a2p",
+    "sms",
+    "compliance",
+    "twilio",
+    "tcr"
+  ],
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "skill/",
+    "templates/",
+    "contracts/",
+    "docs/"
+  ]
+}
