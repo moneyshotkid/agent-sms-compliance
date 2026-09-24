@@ -60,11 +60,15 @@ Twilio describes these as carrier/TCR fees passed through with no added Twilio m
 
 ### Registration packages
 
-| Path | Brand (one-time) | Campaign vetting (one-time) | Campaign monthly |
+| Path | Brand (one-time) | Campaign vetting (per submission) | Campaign monthly |
 | --- | --- | --- | --- |
-| **Standard** | **$46** (includes secondary vetting) | **$15** / campaign | **$1.50–$10** |
-| **Low-volume standard** | **$4.50** | **$15** / campaign | **$1.50–$10** |
-| **Sole proprietor** | **$4.50** | **$15** / campaign | **$2** |
+| **Standard** | **$46** (includes secondary vetting) | **$15** / submission | **$1.50–$10** |
+| **Low-volume standard** | **$4.50** | **$15** / submission | **$1.50–$10** |
+| **Sole proprietor** | **$4.50** | **$15** / submission | **$2** |
+
+**Campaign vetting is per submission.** The **$15** fee is charged on each campaign submission and each resubmission. It is not a single lifetime fee for that campaign.
+
+**Operator note (practical guidance, not a Twilio SLA):** Common operator experience is roughly **~4 campaign submissions** before a permanent deny rather than a remediable reject. After about three burns (~$45), the client may have **one attempt left** before that brand path is dead and they need a new legal entity. SKILL §6 (“do not loop the same submission”) is arithmetic, not just hygiene.
 
 What changed versus the previous sheet (and versus the product page, which was not updated):
 
@@ -73,7 +77,7 @@ What changed versus the previous sheet (and versus the product page, which was n
 | Standard brand | $44 | **$46** |
 | Low-volume standard brand | $4 | **$4.50** |
 | Sole proprietor brand | $4 | **$4.50** |
-| Campaign vetting | $15 | $15 (unchanged) |
+| Campaign vetting | $15 | $15 (amount unchanged) |
 | Campaign monthly bands | $1.50–$10, sole prop $2 | unchanged |
 
 Standard brand **$46** is the Help Center bundle: TCR brand registration **$4.50** plus Standard brand vetting **$41.50**. Low-volume and sole proprietor paths pay the **$4.50** brand registration and do not include secondary vetting.

@@ -2,6 +2,11 @@
 
 ## 0.2.0 — 2026-09-24
 
+### Added
+
+- Twilio campaign vetting (**$15**) is charged per campaign submission / resubmission, not once for the life of the campaign. Operator note: roughly **~4 submissions** is common practice before a permanent deny (after ~3 burns, ~$45, one attempt may remain before a new legal entity is required). Practical guidance, not a Twilio SLA. Ties to SKILL §6.
+- Handoff checklist (SKILL §8) includes throughput / MPS expectations for newly approved low-tier brands (~0.25–4 messages per second). `docs/carrier-isolation.md` states the same rate so isolation rationale and the checklist match.
+
 ### Changed
 
 - Re-verified 10DLC registration fees and date-stamped `docs/pricing-comparison.md` **As of: 2026-09-24**.

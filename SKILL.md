@@ -119,6 +119,7 @@ See `docs/carrier-isolation.md`.
 - [ ] Opt-in URL + evidence sample
 - [ ] HELP/STOP verified
 - [ ] Fee schedule noted (pass-through)
+- [ ] Throughput / MPS expectations set (newly approved low-tier brands often ~0.25–4 messages per second; per-second rate usually binds before the daily cap — a 9am reminder batch may trickle, not blast at 9:00)
 - [ ] Contract signed (process warranty, liability cap)
 
 Contracts: `contracts/draft-msa-clauses.md` · Fees: `docs/pricing-comparison.md`
