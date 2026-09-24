@@ -18,6 +18,10 @@
 3. Release or quarantine numbers; do not immediately recycle into another dating/social client without cooling period and audit.
 4. Revoke API keys; archive consent evidence per retention policy.
 
+## Throughput / MPS
+
+Newly approved low-tier brands often land around **~0.25–4 messages per second**. The per-second rate usually binds before the daily cap, so a 9am reminder batch may trickle rather than blast at 9:00. Set that expectation at handoff (SKILL §8). Isolation is what keeps one client’s filtering or suspension from consuming a neighbor’s throughput.
+
 ## Why this matters for AI agents
 
 Agent products often share infra by default. Compliance-as-a-service must **force isolation** in the skill and in contracts so one rejected dating bot does not burn a neighbor’s throughput.
