@@ -2,6 +2,8 @@
 
 Fill every field before CSP submit. Keep a copy in the client folder (not in git if PII).
 
+Start from `templates/client-intake.md`. The EIN stays operator-held (`XX-XXXXXXX` in examples). `docs/intake-preflight.md` maps intake fields onto this table.
+
 | Field | Value | Notes |
 | --- | --- | --- |
 | Legal company name | | Must match EIN / formation docs |
