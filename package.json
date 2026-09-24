@@ -1,6 +1,6 @@
 {
   "name": "agent-sms-compliance",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "description": "Agent skill for US A2P 10DLC SMS compliance: brand/campaign registration, consent, STOP/HELP, rejection fixes.",
   "license": "MIT",
@@ -22,9 +22,13 @@
   "files": [
     "SKILL.md",
     "README.md",
+    "CHANGELOG.md",
     "skill/",
     "templates/",
     "contracts/",
     "docs/"
-  ]
+  ],
+  "scripts": {
+    "check:copies": "node scripts/check-copies.mjs"
+  }
 }

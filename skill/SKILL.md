@@ -31,14 +31,16 @@ Collect from the client (store outside this skill):
 - Sample messages (2–5), HELP and STOP replies
 - Estimated daily volume and whether dating/social/adult-adjacent
 
-If dating, social dating, escort, adult, or SHAFT-adjacent: flag **high rejection risk** before filing. Prefer honest use-case labels over marketing spin.
+If the use case is dating, social dating, escort, adult, or SHAFT-adjacent, flag **high rejection risk** before filing. Prefer honest use-case labels over marketing spin.
+
+Prohibited SHAFT content (sex, hate, alcohol, firearms, tobacco) and cannabis or gambling promotions: **do not file**. Dating and social dating: **escalate** to a human before filing. Ordinary transactional or operational alerts: **proceed with evidence** (brand, campaign, consent, STOP/HELP). Do not promise carrier approval.
 
 ## 1. Brand registration
 
 1. Choose CSP path (Bandwidth, Twilio Trust Hub, or direct TCR as CSP).
 2. Create / select **Brand** with legal name matching tax records.
 3. Submit entity type (public profit, private, nonprofit, government — per CSP).
-4. Complete Auth+ / secondary vetting when required for trust score.
+4. Complete Auth+ / secondary vetting when required for trust score or public-profit rules.
 5. Record Brand ID / TCR brand ID and approval status.
 6. Do not attach phone numbers yet.
 
@@ -50,17 +52,17 @@ Templates: `templates/brand-registration-fields.md`
 
 1. Pick **one primary use case** (standard, low-volume mixed, or special). Dating/social often needs special / conversational buckets — confirm CSP taxonomy.
 2. Write campaign description: who sends, who receives, purpose, how consent is collected.
-3. Attach sample messages that match the live product.
-4. Declare HELP and STOP behavior.
-5. Submit for CSP / TCR / MNO vetting.
+3. Attach sample messages that match the live product (no bait-and-switch).
+4. Declare HELP and STOP behavior (keyword handling, auto-replies, opt-out latency).
+5. Submit for CSP / TCR / MNO vetting. Expect a 3-month minimum on many CSPs (Bandwidth) except political.
 6. On approval, create Messaging Service / number pool and associate **only this client’s** numbers.
 
 Templates: `templates/campaign-dating-social.md`
 
 ## 3. Consent flow
 
-- **Express opt-in** before first marketing/conversational outreach where required.
-- Capture: timestamp, phone, source, disclosure text version.
+- **Express opt-in** before first marketing or conversational outreach where required. Transactional-only flows still need a clear disclosure when the traffic is A2P.
+- Capture: timestamp, phone, source (web form, keyword, in-app toggle), disclosure text version.
 - Disclosure must name the brand, frequency (“msg & data rates may apply”), and that consent is not a condition of purchase if applicable.
 - Double opt-in for high-risk verticals when CSP or counsel recommends it.
 - Retain evidence for life of campaign + 2 years unless counsel says otherwise.
@@ -73,7 +75,7 @@ Templates: `templates/consent-language.md`
 
 | Keyword | Behavior |
 | --- | --- |
-| **STOP**, STOPALL, UNSUBSCRIBE, CANCEL, END, QUIT | Cease A2P immediately; confirm; suppress |
+| **STOP**, STOPALL, UNSUBSCRIBE, CANCEL, END, QUIT | Cease A2P immediately; send confirmation; suppress future sends |
 | **HELP**, INFO | Reply with brand name, help contact, opt-out how-to |
 
 Templates: `templates/stop-help-replies.md`. Opt-out must not require a login wall.
@@ -83,21 +85,23 @@ Templates: `templates/stop-help-replies.md`. Opt-out must not require a login wa
 1. Brand approved → Campaign draft → Vetting → MNO acceptance where required.
 2. Map numbers to campaign **after** approval.
 3. Probe HELP/STOP before production volume.
-4. Monitor filtering / error codes and trust-score changes.
+4. Monitor filtering, error codes (for example Twilio 30xxx), and trust-score changes.
+5. For Bandwidth-style paths, confirm current vetting billing in the CSP fee article before invoicing.
 
 ## 6. Common rejection fixes
 
 | Theme | Fix |
 | --- | --- |
-| Weak opt-in | Public opt-in page; checkbox + disclosure; audit log |
-| Samples ≠ website | Align site, privacy policy, samples, brand name |
-| SHAFT / dating | Reframe only if truthful; else alternate channel |
-| Missing SMS terms | Add purpose, frequency, STOP/HELP, data handling |
-| Sole prop unsupported | EIN brand path or CSP that supports sole prop |
+| Missing / weak opt-in | Publish a public opt-in page; checkbox + disclosure; audit log |
+| Sample messages ≠ website | Align website, privacy policy, samples, and brand name |
+| SHAFT / adult / dating content | Reframe only if truthful; otherwise do not resubmit an identical campaign. Adult, escort, and other prohibited content may be non-remediable. Consider an alternate channel only after human review |
+| Privacy policy / Terms missing SMS section | Add SMS terms: purpose, frequency, STOP/HELP, data handling |
+| Sole prop unsupported | Use an EIN brand path or a CSP that supports sole prop |
 | Mixed undeclared use cases | Split campaigns or use Low-Volume Mixed honestly |
-| ISV without secondary profile | Use ISV / secondary customer profile pattern |
+| Age-gated / social scraping | Document first-party consent; do not file scraped numbers |
+| ISV filing for end customer without secondary profile | Use the ISV / secondary customer profile pattern |
 
-After a **non-remediable** content rejection, do not loop the same submission.
+After a **non-remediable** content rejection, do not loop the same submission. Escalate to human compliance review.
 
 ## 7. Isolation
 

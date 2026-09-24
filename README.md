@@ -66,6 +66,18 @@ docs/                 # Pricing comparison + carrier isolation
 
 `agent-skill` · `sms` · `10dlc` · `a2p` · `compliance` · `twilio` · `tcr`
 
+## Canonical playbook
+
+This repository is the source of truth for the playbook:
+
+- `SKILL.md` (canonical skill; agentskills frontmatter)
+- `skill/SKILL.md` (same file, compat path — keep it identical; `npm run check:copies`)
+- `templates/`
+- `docs/` (including `docs/pricing-comparison.md`)
+- `contracts/`
+
+The private MCP server vendors these paths. Edit them here, then re-sync the MCP repo. Do not put secrets, API keys, client EINs, or government IDs in this repository.
+
 ## Disclaimer
 
-Not legal advice. Carrier and TCR rules change. Dating and social messaging remain high-scrutiny and may be rejected regardless of paperwork quality.
+Not legal advice. Carrier and TCR rules change. Dating and social messaging remain high-scrutiny and may be rejected regardless of paperwork quality. Prohibited SHAFT content (sex, hate, alcohol, firearms, tobacco), plus cannabis or gambling promotions, should not be filed.
