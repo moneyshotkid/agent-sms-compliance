@@ -89,3 +89,7 @@ The private MCP server vendors these paths. Edit them here, then re-sync the MCP
 ## Disclaimer
 
 Not legal advice. Carrier and TCR rules change. Dating and social messaging remain high-scrutiny and may be rejected regardless of paperwork quality. Prohibited SHAFT content (sex, hate, alcohol, firearms, tobacco), plus cannabis or gambling promotions, should not be filed.
+
+## Hosted MCP
+
+The skill works on its own. For live tools (HELP/STOP probes, carrier connection checks, rejection triage), connect the hosted MCP at `https://smsmcp.internettechnologyservices.com/mcp` with a bearer key from [smsmcp.internettechnologyservices.com](https://smsmcp.internettechnologyservices.com/). Setup and the step-to-tool map are in `SKILL.md` under **Hosted MCP**.

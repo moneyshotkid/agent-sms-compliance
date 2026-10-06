@@ -7,12 +7,50 @@ description: >-
   skill for Twilio, Bandwidth, and Telnyx filing and for ISV per-client
   isolation. Dating and social remain high-scrutiny cases. Do not invent
   carrier fees — check docs/pricing-comparison.md. Do not promise carrier
-  approval.
+  approval. If the Agent SMS Compliance MCP is connected, prefer its tools.
 ---
 
 # SMS 10DLC Compliance
 
 Follow these steps in order. Do not skip consent evidence. Do not promise carrier approval.
+
+## Hosted MCP (optional, preferred when connected)
+
+This skill pairs with the hosted **Agent SMS Compliance MCP** server. When the MCP is connected, use its tools first; they serve the same playbook plus live checks. When it is not connected, follow this file and the bundled `templates/` and `docs/` as written.
+
+Endpoint: `https://smsmcp.internettechnologyservices.com/mcp` (Streamable HTTP, `Authorization: Bearer <api key>`). Plans and keys: [smsmcp.internettechnologyservices.com](https://smsmcp.internettechnologyservices.com/).
+
+Add to `.cursor/mcp.json` (or any MCP client that supports Streamable HTTP). Never commit the key.
+
+```json
+{
+  "mcpServers": {
+    "agent-sms-compliance": {
+      "url": "https://smsmcp.internettechnologyservices.com/mcp",
+      "headers": {
+        "Authorization": "Bearer smsmcp_your_key_here"
+      }
+    }
+  }
+}
+```
+
+Which tool to call at each step:
+
+| Step | MCP tool |
+|------|----------|
+| Load this playbook | `get_skill` |
+| 0. Intake and preflight | `get_client_intake`, `get_intake_preflight`, `checklist_preflight` |
+| Vertical / high-scrutiny check | `assess_vertical_risk` |
+| 1–2. Brand and campaign templates | `list_templates`, `get_template` |
+| 4. STOP / HELP | `classify_opt_out`, `probe_help_stop` |
+| 5. Carrier / CSP submission | `get_carrier_provider`, `check_carrier_connection`, `verify_carrier_webhook` |
+| 6. Rejection fixes | `get_rejection_fixes`, `get_rejection_triage` |
+| 7. Isolation | `get_isolation_notes` |
+| 8. Handoff and tracking | `get_case_tracker`, `get_contract_clauses` |
+| Fees | `get_pricing_overview` (never invent fees) |
+
+A 401 means the key is missing, wrong, or the subscription is inactive; fall back to this file and tell the operator. A 429 means wait and retry.
 
 ## When to use
 
